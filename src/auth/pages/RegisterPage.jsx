@@ -3,6 +3,8 @@ import { Link as RouterLink } from "react-router-dom";
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
+import { useDispatch } from "react-redux";
+import { registerUserNormal } from "../../store/auth/thunks";
 
 const formData = {
   email: "",
@@ -20,6 +22,8 @@ const formValidations = {
 };
 
 export const RegisterPage = () => {
+  const dispatch = useDispatch();
+
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const {
@@ -37,6 +41,9 @@ export const RegisterPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setFormSubmitted(true);
+    console.log(isFormValid);
+    if (!isFormValid) return;
+    dispatch(registerUserNormal(formState));
   };
 
   return (
