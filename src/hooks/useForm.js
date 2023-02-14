@@ -28,7 +28,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         ? null
         : errorMessage;
       setFormValidation(fromCheckedValues);
-      console.log(fromCheckedValues);
     }
   };
 
