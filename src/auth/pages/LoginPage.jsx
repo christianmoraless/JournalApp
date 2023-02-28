@@ -1,10 +1,10 @@
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
 import {
-  checkingAuthentication,
   startGoogleSignIn,
   startLoginWithEmailAndPassword,
 } from "../../store/auth";
-import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "../../hooks";
 import { Google } from "@mui/icons-material";
 import {
@@ -16,7 +16,6 @@ import {
   Typography,
 } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
-import { useMemo } from "react";
 
 export const LoginPage = () => {
   const { status, errorMessage } = useSelector((state) => state.auth);
@@ -40,8 +39,7 @@ export const LoginPage = () => {
     <AuthLayout title="Login">
       <form
         onSubmit={onSubmit}
-        className="animate__animated animate__fadeIn animate__faster"
-      >
+        className="animate__animated animate__fadeIn animate__faster">
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -76,8 +74,7 @@ export const LoginPage = () => {
                 variant="contained"
                 fullWidth
                 type="submit"
-                disabled={isAuthenticating}
-              >
+                disabled={isAuthenticating}>
                 Login
               </Button>
             </Grid>
@@ -87,8 +84,7 @@ export const LoginPage = () => {
                 variant="contained"
                 fullWidth
                 onClick={onGoogleSignIn}
-                disabled={isAuthenticating}
-              >
+                disabled={isAuthenticating}>
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
